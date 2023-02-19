@@ -1,13 +1,14 @@
 {
-  "private": true,
+  "name": "quiz-game",
+  "version": "1.0.0",
+  "description": "Group Project",
+  "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "start": "node ./Server/index.js"
   },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "next": "latest",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "concurrently": "^7.6.0"
   }
 }
