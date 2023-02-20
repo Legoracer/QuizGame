@@ -3,21 +3,11 @@ import styles from '../styles/Home.module.css';
 
 export default function Home() {
 
-  async function joinLobby() {
-    console.log("joining lobby...")
-  }
-
-  async function createLobby() {
-    const response = await fetch("/api/createLobby", {
-      method: "POST"
-    })
-
-    console.log(response)
-  }
-
-  return (
-    <section className={styles.container}>
-      <h1>Spooky Quiz</h1>
-    </section>
-  )
+    return (
+        <main className={styles.container}>
+            <h1>Ghostly Trivia</h1>
+            <button className={styles.join}>Join</button>
+            <button className={styles.create}>Create a new lobby</button>
+        </main>
+    )
 }
