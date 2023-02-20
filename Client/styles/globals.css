@@ -4,13 +4,15 @@
 
 html {
   height: 100%;
-  font-family: 'Lora';
+  font-family: 'Lato';
   user-select: none;
 }
 
 body {
   height: 100vh;
-  background-color: #AF92C9;
+  margin: 0px;
+  background-color: #222222;
+  color: lightgrey;
 }
 
 #__next {

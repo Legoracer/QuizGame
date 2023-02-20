@@ -1,38 +1,28 @@
 .container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .container > h1 {
-  text-align: center;
-  font-size: 50px;
+    margin-bottom: 30px;
 }
 
-.container > div {
-  display: flex;
-  flex-direction: column;
+.container > button {
+    border: none;
+    color: lightgrey;
 }
 
-.container button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  transition: 0.2s;
+.join {
+    background-color: green;
+    width: 150px;
+    height: 30px;
+    margin-bottom: 5px;
+    border-radius: 8px;
 }
 
-.container button:hover {
-  opacity: 0.5;
-  transition: 0.2s;
-}
-
-button.primary {
-  font-size: 20px;
-}
-
-button.secondary {
-  font-size: 14px
+.create {
+    background-color: transparent;
 }
