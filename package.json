@@ -4,11 +4,17 @@
   "description": "Group Project",
   "main": "index.js",
   "scripts": {
-    "start": "node ./Server/index.js"
+    "server": "cd ./Server && npm run start",
+    "server-dev": "cd ./Server && nodemon --exec npm run start",
+    "client": "cd ./Client && npm run start",
+    "client-dev": "cd ./Client && npm run dev",
+    "start": "concurrently 'npm:server' 'npm:client'",
+    "dev": "concurrently 'npm:server-dev' 'npm:client-dev'"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^7.6.0"
+    "concurrently": "^7.6.0",
+    "nodemon": "^2.0.20"
   }
 }

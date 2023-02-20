@@ -1,38 +1,17 @@
 .container {
-  height: 100%;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-}
-
-.container > h1 {
   text-align: center;
-  font-size: 50px;
+  justify-content: space-around;
+  align-items: center;
+
+  background-image: url("https://www.pogdesign.co.uk/cat/imgs/episodes/The-Simpsons/The-Simpsons-S05E05-e9543bc5aefbf1cb524e5db11af6495d-full.jpg");
 }
 
 .container > div {
   display: flex;
   flex-direction: column;
-}
-
-.container button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.container button:hover {
-  opacity: 0.5;
-  transition: 0.2s;
-}
-
-button.primary {
-  font-size: 20px;
-}
-
-button.secondary {
-  font-size: 14px
+  width: 20vw;
 }

@@ -3,9 +3,22 @@ const app = express()
 const port = 8080
 const cors = require('cors')
 const adjectiveNounGenerator = require("adjective-noun-generator")
+const Redis = require('ioredis')
 app.use(cors())
 
-let lobbies = []
+let redis = new Redis({
+    port: 49153,
+    host: "127.0.0.1",
+    username: "default",
+    password: "redispw"
+})
+
+redis.hmset("asd", {
+    id: "jealous-ghost",
+    host: "9120151201284",
+    activePlayers: ["9120151201284"]
+})
+redis.expire("asd", 20)
 
 // Create a new lobby
 app.post('/api/createLobby', (req, res) => {
