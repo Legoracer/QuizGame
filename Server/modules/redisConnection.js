@@ -1,10 +1,11 @@
-const Redis = require('iosredis')
+const config = require("../config.json")
+var Redis = require('iosredis')
 
 let redisConnection = new Redis({
-    port: 49153,
-    host: "127.0.0.1",
-    username: "default",
-    password: "redispw"
+    port: config.redis.port,
+    host: config.redis.host,
+    username: config.redis.username,
+    password: config.redis.password
 })
 
 export default redisConnection
