@@ -6,40 +6,40 @@ const generateID = require("../modules/generateID")
 
 const rateLimiter = rateLimit({
     windowMs: 1 * 60, // One minute
-    max: 1,
+    max: 2,
     standardHeaders: true,
     legacyHeaders: false
 })
 
-router.post("/", rateLimiter, async function(req, res) {
-    const id = req.body.id
+router.post("/create", rateLimiter, async function(req, res) {
+    let genId = generateID()
+    let hostId = req.sessionID
+
+    let statePromise = redisConnection.set(`game:${genId}:state`, "0:0")
+    let dataPromise = redisConnection.hmset(`game:${genId}:data`, {
+        id: genId,
+        host: hostId
+    })
+    let pointsPromise = redisConnection.zadd(`game:${genId}:points`, [])
+
+    await Promise.all([statePromise, dataPromise, pointsPromise])
     
-    if (id) { // You wish to join a lobby
-        let state = await redisConnection.get(`lobby:${id}:state`)
-        if (state == "0:0") {
-            res.send(200)
-        } else {
-            res.send(404)
-        }
-    } else { // You wish to create a lobby
-        let genId = generateID()
-        let hostId = req.sessionID
+    res.status(200)
+})
 
-        let statePromise = redisConnection.set(`lobby:${genId}:state`, "0:0")
-        let dataPromise = redisConnection.hmset(`lobby:${genId}:data`, {
-            id: genId,
-            host: hostId
-        })
-        let pointsPromise = redisConnection.zadd(`lobby:${genId}:points`, [])
+router.put("/join/:id", async function(req, res) {
+    const id = req.params.id
 
-        await Promise.all([statePromise, dataPromise, pointsPromise])
-        
-        res.status(200)
+    let state = await redisConnection.get(`game:${id}:state`)
+    if (state == "0:0") {
+        res.send(200)
+    } else {
+        res.send(404)
     }
 })
 
 router.get("/", async function(req, res) {
-    var lobbies = await redisConnection.keys("lobby:*:data")
+    var lobbies = await redisConnection.keys("game:*:data")
     lobbies = await Promise.all(
         lobbies.map(async (v) => v.split(":")[1])
     )
@@ -47,9 +47,9 @@ router.get("/", async function(req, res) {
 })
 
 router.get("/:id", async function(req, res) {
-    var state = await redisConnection.get(`lobby:${req.params.id}:state`)
-    var lobby = await redisConnection.hgetall(`lobby:${req.params.id}:data`)
-    var points = await redisConnection.zrange(`lobby:${req.params.id}:points`, 0, 99, "WITHSCORES")
+    var state = await redisConnection.get(`game:${req.params.id}:state`, 'ttl', )
+    var game = await redisConnection.hgetall(`game:${req.params.id}:data`)
+    var points = await redisConnection.zrange(`game:${req.params.id}:points`, 0, 99, "WITHSCORES")
     var pointsMap = {}
 
     // Map points to [user] = points
@@ -62,7 +62,7 @@ router.get("/:id", async function(req, res) {
     
     res.send({
         state: state,
-        data: lobby,
+        data: game,
         points: pointsMap
     })
 })
