@@ -1,7 +1,7 @@
 const CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 const LENGTH = 6
 
-export default function() {
+module.exports = function() {
     let res = ""
 
     while (res.length < LENGTH) {

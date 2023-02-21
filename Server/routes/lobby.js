@@ -7,7 +7,7 @@ router.get("/", function(req, res) {
 })
 
 router.get("/:id", function(req, res) {
-    
+    res.send("Works")
 })
 
-export default router
+module.exports = router

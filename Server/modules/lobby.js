@@ -1,4 +1,4 @@
 let lobby = {}
 
 
-export default lobby
+module.exports = lobby

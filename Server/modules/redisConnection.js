@@ -1,5 +1,5 @@
 const config = require("../config.json")
-var Redis = require('iosredis')
+var Redis = require("ioredis")
 
 let redisConnection = new Redis({
     port: config.redis.port,
@@ -8,4 +8,4 @@ let redisConnection = new Redis({
     password: config.redis.password
 })
 
-export default redisConnection
+module.exports = redisConnection

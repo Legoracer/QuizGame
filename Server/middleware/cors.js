@@ -1,6 +1,6 @@
 const cors = require('cors')
 
-export default cors({
+module.exports = cors({
     credentials: true,
     origin: true
 })
