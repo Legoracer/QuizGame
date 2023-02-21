@@ -1,12 +1,20 @@
+const redisConnection = require("./redisConnection")
+
 const CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 const LENGTH = 6
 
-module.exports = function() {
+function generateID() {
     let res = ""
 
     while (res.length < LENGTH) {
         res += CHARACTERS.charAt(Math.floor(Math.random() * charactersLength));
     }
 
-    return res.toUpperCase()
+    if (redisConnection.hmget(`lobby:${res}:data`)) { // Lobby already exists
+        return generateID()
+    } else { // Lobby doesn't exist :thumbsup:
+        return res.toUpperCase()
+    }
 }
+
+module.exports = generateID

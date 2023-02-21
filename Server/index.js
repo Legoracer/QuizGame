@@ -13,6 +13,6 @@ app.use(require("./middleware/session"))
 app.use("/api/lobby", require("./routes/lobby"))
 
 // Listen to port
-app.listen(config.PORT, () => {
-    console.log(`Example app listening on port ${config.PORT}`)
+app.listen(config.port, () => {
+    console.log(`Example app listening on port ${config.port}`)
 })
