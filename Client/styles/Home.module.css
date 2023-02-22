@@ -1,4 +1,8 @@
+
 .container {
+    background-image: url(../images/test.jpg);
+    background-size:cover;
+    opacity:0.9;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -6,23 +10,42 @@
     align-items: center;
 }
 
-.container > h1 {
-    margin-bottom: 30px;
-}
-
 .container > button {
     border: none;
     color: lightgrey;
 }
 
+.titleContainer{
+    background-color:black;
+    border: 4px solid white;
+    height:50vh;
+    width: 50vw;
+    border-radius: 30px;
+}
+
+.titleContainer > h1 {
+    color:white;
+    text-align: center;
+    font-size:100px;
+    
+}
+
 .join {
-    background-color: green;
-    width: 150px;
-    height: 30px;
+    background-color: black;
+    width: 200px;
+    height: 60px;
     margin-bottom: 5px;
+    margin-top:20px;
     border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.join:hover{
+    background-color: gray;
 }
 
 .create {
     background-color: transparent;
+    font-size:12px;
 }
