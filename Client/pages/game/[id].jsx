@@ -3,7 +3,7 @@ import { useEffect } from "react"
 export default function Game(props) {
     useEffect(() => {
         console.log("mounted")
-        let ws = new WebSocket(`ws://127.0.0.1:8000/api/ws/${props.data.id}`)
+        let ws = new WebSocket(`ws://127.0.0.1:8080/api/ws/${props.data.id}`)
         
         return () => {
             console.log("unmounted")
