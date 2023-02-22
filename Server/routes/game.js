@@ -55,7 +55,7 @@ router.get("/", async function(req, res) {
 
 // Lobby information
 router.get("/:id", async function(req, res) {
-    let state = await redisConnection.get(`game:${req.params.id}:state`, 'ttl', )
+    let state = await redisConnection.get(`game:${req.params.id}:state`)
     let game = await redisConnection.hgetall(`game:${req.params.id}:data`)
     let points = await redisConnection.zrange(`game:${req.params.id}:points`, 0, 99, "WITHSCORES")
     let pointsMap = {}

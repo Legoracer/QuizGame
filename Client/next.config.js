@@ -5,7 +5,7 @@ module.exports = {
     async redirects() {
       return [
         {
-          source: '/lobby',
+          source: '/game',
           destination: '/',
           permanent: true,
         },

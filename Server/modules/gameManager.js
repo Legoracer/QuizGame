@@ -1,3 +1,6 @@
+const EventEmitter = require("events")
+
+
 // Game Manager
 function GameManager() {
     this.lobbies = {}
@@ -6,6 +9,11 @@ function GameManager() {
 GameManager.prototype.create = function(id, host) {
     let game = new Game(id, host)
     this.lobbies[id] = game
+
+    game.on("end", function() {
+        this.lobbies[id] = null
+    })
+
     return game
 }
 
@@ -19,11 +27,20 @@ function Game(id, host) {
     this.host = host
     this.state = "lobby"
     this.sockets = {}
+
+    // this.event = new EventEmitter()
 }
+
+Game.prototype = EventEmitter; // This may cause issues
 
 Game.prototype.start = function(ws, req, msg) {
     if (req.sessionID == this.host) {
-        
+        this.state = "category"
+        this.sendAll({
+            action: "changeState",
+            state: "category",
+            categories: [] // generate 4 categories
+        })
     }
 }
 

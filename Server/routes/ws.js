@@ -6,6 +6,7 @@ router.ws("/:id", async function(ws, req) {
     let id = req.params.id;
     let game = gameManager.get(id)
 
+    console.log(`${req.sessionID} connected to ${id}`)
     if (game) {
         game.onClientJoined(ws, req)
         
@@ -14,6 +15,7 @@ router.ws("/:id", async function(ws, req) {
         })
 
         ws.on("message", function(msg) {
+            console.log(message)
             game.onMessage(ws, req, msg)
         })
     } else {
