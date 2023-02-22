@@ -1,10 +1,19 @@
 import { useEffect } from "react"
+import { io } from "socket.io-client"
 
 export default function Game(props) {
     useEffect(() => {
         console.log("mounted")
-        let ws = new WebSocket(`ws://127.0.0.1:8080/api/ws/${props.data.id}`)
-        
+
+
+        const socket = io(`ws://localhost:8080/api/ws/${props.data.id}`, {
+            reconnectionDelayMax: 10000,
+            auth: {
+                token: "123"
+            },
+        });
+
+
         return () => {
             console.log("unmounted")
         }

@@ -7,11 +7,13 @@
   },
   "dependencies": {
     "cd": "^0.3.3",
+    "express": "^4.18.2",
     "next": "latest",
     "next-navigation": "^1.0.6",
     "quiz-game-server": "file:../Server",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "socket.io-client": "^4.6.1"
   },
   "proxy": "http://localhost:8080"
 }
