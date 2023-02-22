@@ -10,7 +10,8 @@ app.use(require("./middleware/cors"))
 app.use(require("./middleware/session"))
 
 // Routes
-app.use("/api/lobby", require("./routes/lobby"))
+app.use("/api/game", require("./routes/game"))
+app.use("/api/game", require("./routes/ws"))
 
 // Listen to port
 app.listen(config.port, () => {

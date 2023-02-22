@@ -1,5 +1,5 @@
 const config = require("../config.json")
-var Redis = require("ioredis")
+let Redis = require("ioredis")
 
 let redisConnection = new Redis({
     port: config.redis.port,
