@@ -19,9 +19,9 @@ export default function LogIn() {
             <main className={styles.mainContainer}>
                 <div className={styles.formContainerLogin}>
                     <form className={styles.loginForm}>
-                        <label className={styles.labelUsername} for="username">Username:</label>
+                        <label className={styles.labelUsername} htmlFor="username">Username:</label>
                         <input className={styles.username} type="text" id="username" name="username"/>
-
+    
                         <label className={styles.labelPassword} for="password">Password:</label>
                         <input className={styles.password} type="text" id="password" name="password"/>
 

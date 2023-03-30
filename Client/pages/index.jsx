@@ -31,12 +31,9 @@ export default function Home() {
 
     return (
         <main className={styles.mainContainer}>
-            <div className={styles.titleContainer}>
-                <img className={styles.screwImage} src="screw.png" width="25px"/>
-                <h1 className={titleFont.className}>Ghostly Trivia</h1> 
-            </div>
+            <h1 className={[titleFont.className, styles.mainTitle].join(" ")}>Ghostly Trivia</h1> 
             <button className={styles.loginButton} onClick={joinLobby}>Log in</button>
-            <button className={styles.createAccount} onClick={createLobby}>Create new account</button>
+            <button className={styles.createAccountButton} onClick={createLobby}>Create new account</button>
         </main>
 
     )
