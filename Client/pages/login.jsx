@@ -44,12 +44,12 @@ export default function LogIn() {
 
             <main className={styles.mainContainer}>
                 <div className={styles.formContainerLogin}>
-                    <form onSubmit={login} className={styles.loginForm}>
-                        <label className={styles.labelUsername} hmtlFor="username">Username:</label>
-                        <input onChange={updateData} className={styles.username} type="text" id="username" name="username"/>
-
-                        <label className={styles.labelPassword} hmtlFor="password">Password:</label>
-                        <input onChange={updateData} className={styles.password} type="password" id="password" name="password"/>
+                    <form className={styles.loginForm}>
+                        <label className={styles.labelUsername} htmlFor="username">Username:</label>
+                        <input className={styles.username} type="text" id="username" name="username"/>
+    
+                        <label className={styles.labelPassword} for="password">Password:</label>
+                        <input className={styles.password} type="text" id="password" name="password"/>
 
                         <input className={styles.submitButtonLogin} type="submit" value="Log in"/>
                     </form>
