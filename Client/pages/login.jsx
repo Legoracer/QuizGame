@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.css';
 import { Roboto } from '@next/font/google';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const roboto = Roboto({ 
     weight: '400',
@@ -19,9 +19,22 @@ export default function LogIn() {
         })
     }
 
+    useEffect(() => {
+        let sessionData = fetch("http://localhost:8080/api/auth", {
+            credentials: "include",
+            headers: { 'Content-Type': 'application/json' }
+        }).then((sessionData) => {
+            sessionData.json().then((json) => {
+                if (json.username != null && json.username != "") {
+                    router.push("/lobby")
+                }
+            })
+        })        
+    })
+
     async function login(event) {
         event.preventDefault()
-        
+
         const response = await fetch("/api/auth/login", {
             method: "POST",
             body: JSON.stringify({

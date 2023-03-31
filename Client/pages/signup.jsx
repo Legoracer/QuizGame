@@ -1,6 +1,6 @@
 import styles from '../styles/Home.module.css';
 import { Roboto } from '@next/font/google';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 const roboto = Roboto({ 
@@ -18,6 +18,19 @@ export default function SignUp() {
             [e.target.name]: e.target.value
         })
     }
+
+    useEffect(() => {
+        let sessionData = fetch("http://localhost:8080/api/auth", {
+            credentials: "include",
+            headers: { 'Content-Type': 'application/json' }
+        }).then((sessionData) => {
+            sessionData.json().then((json) => {
+                if (json.username != null && json.username != "") {
+                    router.push("/lobby")
+                }
+            })
+        })        
+    })
 
     async function signup(event) {
         event.preventDefault()

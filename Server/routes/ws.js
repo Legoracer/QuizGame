@@ -6,7 +6,6 @@ router.ws("/:id", async function(ws, req) {
     let id = req.params.id;
     let game = gameManager.get(id)
 
-    console.log(req.session)
 
     console.log(`${req.sessionID} connected to ${id}`)
     if (game) {
@@ -17,7 +16,7 @@ router.ws("/:id", async function(ws, req) {
         })
 
         ws.on("message", function(msg) {
-            console.log(message)
+            console.log("MESSAGE:",message)
             game.onMessage(ws, req, msg)
         })
     } else {

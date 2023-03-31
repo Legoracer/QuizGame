@@ -5,7 +5,6 @@ const redisConnection = require("../modules/redisConnection")
 
 // Creating a new lobby
 router.post("/signup", async function(req, res) {
-    console.log(req.body)
     let username = req.body.username;
     let password = req.body.password;
     let email = req.body.email;
@@ -13,9 +12,9 @@ router.post("/signup", async function(req, res) {
     let success = await auth.signup(email, username, password)
     if (success) {
         req.session.username = username
-        res.status(200)
+        res.sendStatus(200)
     } else {
-        res.status(401)
+        res.sendStatus(401)
     }
     
 })
@@ -24,26 +23,29 @@ router.post("/signup", async function(req, res) {
 router.post("/login", async function(req, res) {
     let username = req.body.username;
     let password = req.body.password;
-
+    console.log("LOGIN:",req.cookies["connect.sid"])
     let success = await auth.login(username, password)
     if (success) {
         req.session.username = username
         res.sendStatus(200)
+    } else {
+        res.sendStatus(401)
     }
-    res.sendStatus(401)
 })
 
 router.post("/logout", async function(req, res) {
     req.session.username = null
+    res.sendStatus(200)
 })
 
 router.get("/", async function(req, res) {
+    console.log("FETCH:",req.cookies["connect.sid"])
     let data = await auth.getUser(req.session.username)
+    console.log(req.session.username)
     let newData = {
         username: data.username,
         email: data.email
     }
-    console.log(newData)
     res.send(newData)
 })
 

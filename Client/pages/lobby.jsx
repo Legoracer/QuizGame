@@ -1,13 +1,56 @@
 import styles from '../styles/JoinLobby.module.css';
 import { Roboto } from '@next/font/google';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {Image} from "next"
+import { useRouter } from 'next/router';
 const roboto = Roboto({ 
     weight: '400',
     subsets: ['latin'],
 });
 
 export default function lobby() {
+    let router = useRouter()
+
+    useEffect(() => {
+        let sessionData = fetch("http://localhost:8080/api/auth", {
+            credentials: "include",
+            headers: { 'Content-Type': 'application/json' }
+        }).then((sessionData) => {
+            sessionData.json().then((json) => {
+                if (json.username == null || json.username =="") {
+                    router.push("/")
+                }
+            })
+        })        
+    })
+
+    async function joinLobby() {
+
+    }
+
+    async function createLobby() {
+        const response = await fetch("/api/createLobby", {
+            method: "POST",
+            credentials: "include"
+        })
+        const json = await response.json()
+
+        if (json.lobby) {
+            router.push(`/lobby/${json.lobby}`)
+        }
+    }
+
+    async function logout() {
+        const response = await fetch("/api/auth/logout", {
+            method: "POST",
+            credentials: "include"
+        })
+        const status = response.status
+
+        if (status == 200) {
+            router.reload()
+        }
+    }
 
     return (
         <>
@@ -19,7 +62,7 @@ export default function lobby() {
 
         <main className={styles.mainContainer}>
         <nav className={styles.navbar}>
-            <button className={styles.logoutButton}>Log out</button>
+            <button onClick={logout} className={styles.logoutButton}>Log out</button>
         </nav>
 
         <div className={styles.centerContainer}>
@@ -48,23 +91,3 @@ export default function lobby() {
     )
 
 }
-
-export async function getServerSideProps(context) {
-    let sessionData = await fetch("http://localhost:8080/api/auth")
-    let body = await sessionData.json()
-    
-    if (body.username == "") {
-        return {
-            redirect: {
-                destination: '/',
-                permanent: false
-            },
-        }
-    } else {
-        return {
-            props: {
-      
-            },
-          }
-    }
-  }
