@@ -5,7 +5,6 @@ export default function Game(props) {
     useEffect(() => {
         console.log("mounted")
 
-
         const socket = io(`ws://localhost:8080/api/ws/${props.data.id}`, {
             reconnectionDelayMax: 10000,
             auth: {
