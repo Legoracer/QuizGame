@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { io } from "socket.io-client"
+import styles from '../../styles/Lobby.module.css';
 
 export default function Game(props) {
     useEffect(() => {
@@ -19,11 +20,9 @@ export default function Game(props) {
     })
 
     return (
-        <><h1>
-            {props.data.id}
-        </h1><h2>
-                {props.data.host}
-            </h2></>
+        <main>
+
+        </main>
     )
 }
 
@@ -42,6 +41,15 @@ export async function getStaticProps({ params }) {
         method: "GET"
     })
     let json = await response.json();
+
+    if (json.state == null) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false
+            },
+        }
+    }
 
     return {
         props: json || {}
