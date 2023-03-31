@@ -1,5 +1,6 @@
 import styles from '../styles/Home.module.css';
 import { Roboto } from '@next/font/google';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 const roboto = Roboto({ 
@@ -8,6 +9,7 @@ const roboto = Roboto({
 });
 
 export default function LogIn() {
+    const router = useRouter()
     const [data, setData] = useState({})
 
     const updateData = e => {
@@ -31,7 +33,12 @@ export default function LogIn() {
             },
             credentials: "include"
         })
-        // const json = await response.json()
+        let status = response.status
+
+        console.log(status)
+        if (status == 200) {
+            router.push("/lobby")
+        }
     }
 
     return (
@@ -44,12 +51,12 @@ export default function LogIn() {
 
             <main className={styles.mainContainer}>
                 <div className={styles.formContainerLogin}>
-                    <form className={styles.loginForm}>
+                    <form className={styles.loginForm} onSubmit={login}>
                         <label className={styles.labelUsername} htmlFor="username">Username:</label>
-                        <input className={styles.username} type="text" id="username" name="username"/>
+                        <input onChange={updateData} className={styles.username} type="text" id="username" name="username"/>
     
                         <label className={styles.labelPassword} for="password">Password:</label>
-                        <input className={styles.password} type="text" id="password" name="password"/>
+                        <input onChange={updateData} className={styles.password} type="text" id="password" name="password"/>
 
                         <input className={styles.submitButtonLogin} type="submit" value="Log in"/>
                     </form>

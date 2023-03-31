@@ -8,41 +8,48 @@ const someOtherPlaintextPassword = 'not_bacon';
 
 async function signup(email, username, password) {
     let existingData = await redisConnection.hgetall(`auth:${username}`)
-    
+
     if (Object.keys(existingData).length != 0) return false; // exists
 
-    bcrypt.genSalt(saltRounds, function(err, salt) {
-        bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
-            
+    bcrypt.genSalt(saltRounds, function (err, salt) {
+        bcrypt.hash(myPlaintextPassword, salt, function (err, hash) {
+
             redisConnection.hmset(`auth:${username}`, {
                 username: username,
                 password: hash,
-                email: email
+                email: email,
+                salt: salt
             })
 
         });
     });
 
+    console.log("registering...")
     return true
 }
 
 async function login(username, password) {
     let existingData = await redisConnection.hgetall(`auth:${username}`)
-    
-    bcrypt.genSalt(saltRounds, function(err, salt) {
-        bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
-            
-            if (existingData && existingData.password == hash) {
-                return true
-            }
 
-        });
-    });
+    let salt = existingData.salt
+    let hash = await bcrypt.hash(myPlaintextPassword, salt)
+
+    console.log(hash, existingData.password)
+
+    if (existingData && existingData.password == hash) {
+        return true
+    }
 
     return false
 }
 
+async function getUser(username) {
+    let existingData = await redisConnection.hgetall(`auth:${username}`)
+    return existingData
+}
+
 module.exports = {
     login: login,
-    signup: signup
+    signup: signup,
+    getUser: getUser
 }

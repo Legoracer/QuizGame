@@ -46,3 +46,23 @@ export default function Home() {
 
     )
 }
+
+export async function getServerSideProps(context) {
+    let sessionData = await fetch("http://localhost:8080/api/auth")
+    let body = await sessionData.json()
+    
+    if (body.username != "") {
+        return {
+            redirect: {
+                destination: '/lobby',
+                permanent: false
+            },
+        }
+    } else {
+        return {
+            props: {
+      
+            },
+          }
+    }
+}

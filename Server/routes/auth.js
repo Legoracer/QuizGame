@@ -25,13 +25,12 @@ router.post("/login", async function(req, res) {
     let username = req.body.username;
     let password = req.body.password;
 
-    let success = auth.login(username, password)
+    let success = await auth.login(username, password)
     if (success) {
         req.session.username = username
-        res.status(200)
-    } else {
-        res.status(401)
+        res.sendStatus(200)
     }
+    res.sendStatus(401)
 })
 
 router.post("/logout", async function(req, res) {
@@ -39,7 +38,13 @@ router.post("/logout", async function(req, res) {
 })
 
 router.get("/", async function(req, res) {
-    res.send("hi")
+    let data = await auth.getUser(req.session.username)
+    let newData = {
+        username: data.username,
+        email: data.email
+    }
+    console.log(newData)
+    res.send(newData)
 })
 
 module.exports = router
