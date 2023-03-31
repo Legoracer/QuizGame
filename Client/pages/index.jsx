@@ -13,6 +13,14 @@ const titleFont = Bowlby_One_SC ({
 export default function Home() {
     const router = useRouter()
 
+    async function gotoLogin() {
+        router.push(`/login`)
+    }
+
+    async function gotoRegister() {
+        router.push("/signup")
+    }
+
     async function joinLobby() {
 
     }
@@ -35,8 +43,8 @@ export default function Home() {
                 <img className={styles.screwImage} src="screw.png" width="25px"/>
                 <h1 className={titleFont.className}>Ghostly Trivia</h1> 
             </div>
-            <button className={styles.loginButton} onClick={joinLobby}>Log in</button>
-            <button className={styles.createAccount} onClick={createLobby}>Create new account</button>
+            <button className={styles.loginButton} onClick={gotoLogin}>Log in</button>
+            <button className={styles.createAccount} onClick={gotoRegister}>Create new account</button>
         </main>
 
     )
