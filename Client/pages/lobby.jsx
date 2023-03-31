@@ -7,6 +7,8 @@ const roboto = Roboto({
     subsets: ['latin'],
 });
 
+export default function lobby(){
+
 return (
     <>
         <style jsx global>{`
@@ -16,8 +18,10 @@ return (
         `}</style>
 
         <main className={styles.mainContainer}>
-            
+
         </main>
 
     </>
 )
+
+}
