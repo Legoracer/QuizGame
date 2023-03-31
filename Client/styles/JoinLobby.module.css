@@ -1,3 +1,90 @@
 .mainContainer{
-    background-color: rgb(13, 13, 13);
+    background-color: rgb(13, 17, 23);
+    height: 100%;
+}
+
+.navbar{
+    background-color: rgb(22, 27, 34);
+    display:flex;
+    justify-content: flex-end;
+    height:50px;
+}
+
+.logoutButton{
+    background-color: transparent;
+    border-color: transparent;
+    color:white;
+    font-size:16px;
+    margin:0.5% 2%;
+}
+
+.logoutButton:hover{
+    color:rgb(193, 190, 190);
+}
+
+.centerContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height:calc(100% - 50px);
+}
+
+.statisticsContainer{
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin-top:20px;
+}
+
+.statisticsContainer p{
+    text-align: center;
+}
+
+.totalWinsContainer, .winRateContainer, .correctRateContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.totalWinsImg, .winRateImg, .correctRateImg{
+    width: 50px;
+    display: block;
+}
+
+.buttonContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top:3%;
+}
+
+.joinLobbyButton {
+    background-color: rgb(255, 255, 255);
+    color: rgb(92, 91, 91);
+    border-color: transparent;
+    border-radius: 8px;
+    width: 130%;
+    height: 40px;
+    margin-bottom: 10%;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.joinLobbyButton:hover{
+    background-color: rgb(232, 228, 228);
+}
+
+.createLobbyButton {
+    background-color: transparent;
+    border-color: transparent;
+    color:white;
+    font-size:13px;
+}
+
+.createLobbyButton:hover{
+    color: rgb(187, 185, 185);
 }
