@@ -93,6 +93,7 @@ export default function Game(props) {
 
     return (
         <div className={styles.main}>
+            {/* DO NOT TOUCH ANYTHING BELOW THIS! */}
             {(state == "LOBBY") ?
             <Lobby messages={messages} socket={socket} username={username} props={props}/>
             : null}
@@ -104,6 +105,7 @@ export default function Game(props) {
             {(state == "ANSWER") ?
             <Answer isCorrect={answerData.current.correct} correctString={answerData.current.answer} leaderboard={answerData.current.leaderboard}/>
             : null}
+            {/* UP TO HERE! */}
         </div>
     )
 }
