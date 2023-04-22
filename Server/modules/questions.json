@@ -1,0 +1,723 @@
+{
+    "General Knowledge": [
+        {
+            "question":"What is the name of the largest planet in our solar system?",
+            "answers": [
+                "Saturn",
+                "Jupiter",
+                "Venus",
+                "Neptune"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question":"Who is credited with discovering penicillin?",
+            "answers": [
+                "Marie Curie",
+                "Rachel Carson",
+                "Alexander Fleming",
+                "Pierre Curie"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question":"Lake Victoria is the largest lake on which continent?",
+            "answers": [
+                "Africa",
+                "Australia",
+                "Asia",
+                "South Africa"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question":"Who wrote the novel The Catcher in the Rye?",
+            "answers": [
+                "Ernest Hemingway",
+                "J.D. Salinger",
+                "Jack Kerouac",
+                "George Orwell"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question":"Who painted the famous artwork The Scream?",
+            "answers": [
+                "Vasilij Kandinski",
+                "Pablo Picasso",
+                "Edvard Munch",
+                "Salvador Dalí"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question":"Who directed the 1975 film Jaws?",
+            "answers": [
+                "Steven Spielberg",
+                "George Lucas",
+                "James Cameron",
+                "Martin Scorsese"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question":"Which city is known as the 'Eternal City' because of its rich history and cultural heritage?",
+            "answers": [
+                "Paris",
+                "Milan",
+                "Madrid",
+                "Rome"
+            ],
+            "correctAnswer": 4
+        },
+        {
+            "question":" What is the smallest country in the world by land area?",
+            "answers": [
+                "Monaco",
+                "Liechtenstein",
+                "Vatican City",
+                "San Marino"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question":"What is the name of the first satellite ever launched into space?",
+            "answers": [
+                "Sputnik 1",
+                "Tiros-1",
+                "Vostok",
+                "Telstar-1"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question":"Who was the first woman to win a Nobel Prize?",
+            "answers": [
+                "Ève Curie",
+                "Marie Curie",
+                "Rosalind Franklin",
+                "Lise Meitner"
+            ],
+            "correctAnswer": 2
+        }
+
+    ],
+
+    "Music": [
+        {
+            "question":"Beyoncé was a member of which group before going solo?",
+            "answers": [
+                "TLC",
+                "Spice Girls",
+                "Pussycat Dolls",
+                "Destiny’s Child"
+            ],
+            "correctAnswer": 4
+        },
+        {
+            "question":"Which female singer partnered with Nelly to release Dilemma in 2002?",
+            "answers": [
+                "Kelly Rowland",
+                "Ciara",
+                "Beyoncé",
+                "Kylie Minogue"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question":"Eminem's 8 Mile is named after a road in which city?",
+            "answers": [
+                "New York",
+                "Denver",
+                "Atlanta",
+                "Detroit"
+            ],
+            "correctAnswer": 4
+        },
+        {
+            "question":"Which classical composer was deaf?",
+            "answers": [
+                "Wolfgang Amadeus Mozart",
+                "Ludwig van Beethoven",
+                "Frédéric Chopin",
+                "Johann Sebastian Bach"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question":"Which band released albums entitled 'Morrison Hotel', 'Waiting for the Sun' and 'L.A. Woman'?",
+            "answers": [
+                "The Doors",
+                "Pink Floyd",
+                "Led Zeppelin",
+                "The Rolling Stones"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question":"Who was the first woman ever inducted into the Rock and Roll Hall of Fame?",
+            "answers": [
+                "Whitney Houston",
+                "Diana Ross",
+                "Aretha Franklin",
+                "Tina Turner"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question":"Jimi Hendrix only had one Top 40 hit. Which song was it?",
+            "answers": [
+                "Purple Haze",
+                "Castles Made of Sand",
+                "Hey Joe",
+                "All Along the Watchtower"
+            ],
+            "correctAnswer": 4
+        },
+        {
+            "question":"Which Marvel movie's soundtrack won two Grammys?",
+            "answers": [
+                "Avengers: Infinity War",
+                "Black Panther",
+                "Avengers: Endgame",
+                "Thor: Love and thunder"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question":"Which country has the highest concentration of metal rock bands?",
+            "answers": [
+                "United States of America",
+                "Sweden",
+                "Poland",
+                "Finland"
+            ],
+            "correctAnswer": 4
+        },
+        {
+            "question":"What is the best-selling single of all-time worldwide?",
+            "answers": [
+                "I Will Always Love You by Whitney Houston",
+                "My Heart Will Go On by Celine Dion",
+                "White Christmas by Bing Crosby",
+                "In the Summertime by Mungo Jerry"
+            ],
+            "correctAnswer": 3
+        }
+    ],
+
+    "History": [
+        {
+            "question":"Who was the first human to journey into space?",
+            "answers": [
+                "Neil Armstrong",
+                "Alexey Leonov",
+                "Yuri Gagarin",
+                "Alan Shepard"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question":"Where was Napoleon Bonaparte born?",
+            "answers": [
+                "Corsica",
+                "Paris",
+                "Nice",
+                "Marseille"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question":"In which decade did the potato famine strike Ireland?",
+            "answers": [
+                "1900s",
+                "1830s",
+                "1890s",
+                "1840s"
+            ],
+            "correctAnswer": 4
+        },
+        {
+            "question":"Who served as the final leader of the Soviet Union?",
+            "answers": [
+                "Konstantin Chernenko",
+                "Nikita Khrushchev",
+                "Georgy Malenkov",
+                "Mikhail Gorbachev"
+            ],
+            "correctAnswer": 4
+        },
+        {
+            "question":"Who was the last tsar of Russia?",
+            "answers": [
+                "Alexander II",
+                "Alexander III",
+                "Nicholas II",
+                "Nicholas I"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question":"How many wives did Henry VIII have?",
+            "answers": [
+                "4",
+                "6",
+                "5",
+                "8"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question":"Which country did Germany invade to kickstart World War II?",
+            "answers": [
+                "Poland",
+                "Russia",
+                "United Kingdom",
+                "France"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question":"In what year did Pakistan gain independence from the UK?",
+            "answers": [
+                "1970",
+                "1955",
+                "1930",
+                "1947"
+            ],
+            "correctAnswer": 4
+        },
+        {
+            "question":"In what year did the Berlin Wall fall?",
+            "answers": [
+                "1982",
+                "1988",
+                "1989",
+                "1990"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question":"Leonardo da Vinci, Michelangelo and Raphael all belong to which historical art period?",
+            "answers": [
+                "Renaissance",
+                "Baroque",
+                "Impressionism",
+                "Classicism"
+            ],
+            "correctAnswer": 1
+        }
+    ],
+
+    "Geography": [
+        {
+            "question":"Which US state is known by the nickname 'Garden State'?",
+            "answers": [
+                "New Jersey",
+                "New York",
+                "Delaware",
+                "Pennsylvania"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question":"Warsaw is the capital city of which European country?",
+            "answers": [
+                "Czech Republic",
+                "Poland",
+                "Slovakia",
+                "Bulgaria"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question":"Which is the most northernly capital city in Europe?",
+            "answers": [
+                "Oslo",
+                "Stockholm",
+                "Helsinki",
+                "Reykjavik"
+            ],
+            "correctAnswer": 4
+        },
+        {
+            "question":"The Danube flows into what body of water?",
+            "answers": [
+                "The Mediterranean Sea",
+                "The Baltic Sea",
+                "The Black Sea",
+                "The North Sea"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question":"Which country has the longest coastline in the world?",
+            "answers": [
+                "Russia",
+                "Australia",
+                "Canada",
+                "United States of America"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question":"Which African country has the largest population?",
+            "answers": [
+                "Egypt",
+                "Nigeria",
+                "South Africa",
+                "Ethiopia"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question":"How many states are there in Australia?",
+            "answers": [
+                "8",
+                "4",
+                "10",
+                "6"
+            ],
+            "correctAnswer": 4
+        },
+        {
+            "question":"In which city would you find La Sagrada Familia?",
+            "answers": [
+                "Rome",
+                "Madrid",
+                "Barcelona",
+                "Venice"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question":"In which country would you find Machu Picchu?",
+            "answers": [
+                "Peru",
+                "Argentina",
+                "China",
+                "Vietnam"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question":"Which city currently has the highest population in the world?",
+            "answers": [
+                "Shanghai",
+                "Mexico City",
+                "Delhi",
+                "Tokyo"
+            ],
+            "correctAnswer": 4
+        }
+    ],
+
+    "Film": [
+        {
+            "question":"What year was the first Toy Story film released in cinemas?",
+            "answers": [
+                "2000",
+                "1998",
+                "1995",
+                "2001"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question":"How many films have Al Pacino and Robert De Niro starred in together?",
+            "answers": [
+                "6",
+                "2",
+                "4",
+                "5"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question":"Frankly my dear, I don't give a damn' is an iconic line from which classic film?",
+            "answers": [
+                "Gone with the Wind",
+                "Casablanca",
+                "A Streetcar Named Desire",
+                "Wuthering Heights"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question":"What does Tom Hanks compare life to in Forest Gump?",
+            "answers": [
+                "A rollercoaster",
+                "A game of chess",
+                "A book",
+                "A box of chocolates"
+            ],
+            "correctAnswer": 4
+        },
+        {
+            "question":"How many Academy Awards has Leonardo DiCaprio won?",
+            "answers": [
+                "6",
+                "2",
+                "1",
+                "5"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question":"What is the name of the second James Bond film?",
+            "answers": [
+                "Goldfinger",
+                "Dr.No",
+                "From Russia With Love",
+                "Thunderball"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question":"What is the highest-grossing box office film of all time?",
+            "answers": [
+                "Avengers: Endgame",
+                "Avatar",
+                "Jurassic World",
+                "Titanic"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question":"In The Matrix, what is the color of the pill Neo takes?",
+            "answers": [
+                "Blue",
+                "Purple",
+                "Green",
+                "Red"
+            ],
+            "correctAnswer": 4
+        },
+        {
+            "question":"The head of what kind of animal is front-and-center in an infamous scene from The Godfather?",
+            "answers": [
+                "A dog",
+                "A horse",
+                "A pig",
+                "A bull"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question":"For what movie did Steven Spielberg win his first Oscar for Best Director?",
+            "answers": [
+                "E.T.",
+                "Jaws",
+                "Schindler's List",
+                "Jurassic Park"
+            ],
+            "correctAnswer": 3
+        }
+    ],
+    "Food and drink": [
+        {
+            "question":"Which food product has used the slogan 'Taste the rainbow' since 1994?",
+            "answers": [
+                "M&Ms",
+                "Haribo",
+                "Pringles",
+                "Skittles"
+            ],
+            "correctAnswer": 4
+        },
+        {
+            "question":"Which nuts are used in marzipan?",
+            "answers": [
+                "Walnuts",
+                "Almonds",
+                "Cashews",
+                "Peanuts"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question":"What is the most expensive spice in the world by weight?",
+            "answers": [
+                "Saffron",
+                "Vanilla",
+                "Turmeric",
+                "Black pepper"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question":"What spirit is mixed with ginger beer in a Moscow mule?",
+            "answers": [
+                "Gin",
+                "Tequila",
+                "Vodka",
+                "Whiskey"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question":"Who in Greek mythology is the god of wine?",
+            "answers": [
+                "Hermes",
+                "Artemis",
+                "Demeter",
+                "Dionysus"
+            ],
+            "correctAnswer": 4
+        },
+        {
+            "question":"Which animal can be found on the Toblerone logo?",
+            "answers": [
+                "Lion",
+                "Bear",
+                "Lynx",
+                "Tiger"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question":"Which herb is usually used in the production of pesto?",
+            "answers": [
+                "Basil",
+                "Cilantro",
+                "Oregano",
+                "Parsley"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question":"From which type of flower does a vanilla pod come?",
+            "answers": [
+                "Tulip",
+                "Dahlia",
+                "Orchid",
+                "Carnation"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question":"In which country is the Staropramen brewery?",
+            "answers": [
+                "Slovakia",
+                "Bulgaria",
+                "Poland",
+                "Czech Republic"
+            ],
+            "correctAnswer": 4
+        },
+        {
+            "question":" From which country does Gouda cheese originate?",
+            "answers": [
+                "France",
+                "Switzerland",
+                "The Netherlands",
+                "Germany"
+            ],
+            "correctAnswer": 3
+        }
+    ],
+
+    "Sport": [
+        {
+            "question":"Who won the Formula One's World Driver's title in 2022?",
+            "answers": [
+                "Lewis Hamilton",
+                "Charles Leclerc",
+                "Sergio Perez",
+                "Max Verstappen"
+            ],
+            "correctAnswer": 4
+        },
+        {
+            "question":"What is Usain Bolt's blistering 100m world record time?",
+            "answers": [
+                "9.58 seconds",
+                "10.22 seconds",
+                "9.88 seconds",
+                "9.43 seconds"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question":"In which sport do teams compete to win the Stanley Cup?",
+            "answers": [
+                "Tennis",
+                "Ice hokey",
+                "Polo",
+                "Cricket"
+            ],
+            "correctAnswer": 2 
+        },
+        {
+            "question":"In American Football, how many points do you score for a touchdown?",
+            "answers": [
+                "10",
+                "12",
+                "4",
+                "6"
+            ],
+            "correctAnswer": 4
+        },
+        {
+            "question":"The Los Angeles Lakers and New York Knicks play which sport?",
+            "answers": [
+                "Baseball",
+                "Football",
+                "Basketball",
+                "Handball"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question":"Which team are the current NBA champions?",
+            "answers": [
+                "Golden State Warriors",
+                "Los Angeles Lakers",
+                "Boston Celtics",
+                "New York Knicks"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question":"In which sport is 180 deemed a perfect score?",
+            "answers": [
+                "Golf",
+                "Darts",
+                "Tennis",
+                "Cricket"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question":"How many Olympic gold medals did Michael Phelps win?",
+            "answers": [
+                "10",
+                "19",
+                "23",
+                "12"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question":"Which Formula One team did Lewis Hamilton compete for from 2007 to 2012?",
+            "answers": [
+                "Mercedes",
+                "Red Bull",
+                "Ferrari",
+                "McLaren"
+            ],
+            "correctAnswer": 4
+        },
+        {
+            "question":"In karate, what colour belt comes right before black?",
+            "answers": [
+                "Brown",
+                "Yellow",
+                "Green",
+                "Orange"
+            ],
+            "correctAnswer": 1
+        }
+    ]
+}
+

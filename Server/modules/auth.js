@@ -15,6 +15,13 @@ async function signup(email, username, password) {
             email: email
         })
 
+        await redisConnection.hmset(`user:${username}`, {
+            total_games: 0,
+            wins: 0,
+            total_answers: 0,
+            correct_answers: 0
+        })
+
         return true
     }
 
@@ -34,8 +41,13 @@ async function login(username, password) {
 }
 
 async function getUser(username) {
-    let existingData = await redisConnection.hgetall(`auth:${username}`)
-    return existingData
+    let authData = await redisConnection.hgetall(`auth:${username}`)
+    let userData = await redisConnection.hgetall(`user:${username}`)
+
+    return {
+        auth: authData,
+        user: userData
+    }
 }
 
 module.exports = {

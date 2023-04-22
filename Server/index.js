@@ -1,20 +1,15 @@
 const https = require("https")
 const config = require("./config.json")
 const express = require('express')
+const http = require('http');
 const app = express()
+const server = http.createServer(app);
 let expressWs = require("express-ws")
 const bodyParser = require("body-parser")
 
-// Ws
 let sessionParser = require("./middleware/session")
 
-expressWs(app, null, {
-    wsOptions: {
-        verifyClient: function() {
-
-        }
-    }
-})
+expressWs(app)
  
 // Nginx?
 app.set("trust proxy", 1);

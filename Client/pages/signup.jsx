@@ -73,7 +73,7 @@ export default function SignUp() {
                         <input onChange={updateData} className={styles.email} type="text" id="email" name="email"/> 
                         
                         <label className={styles.labelPassword} htmlFor="password">Password:</label>
-                        <input onChange={updateData} className={styles.password} type="text" id="password" name="password"/>
+                        <input onChange={updateData} className={styles.password} type="password" id="password" name="password"/>
 
                         <input className={styles.submitButtonSignup} type="submit" value="Sign up"/>
                     </form>

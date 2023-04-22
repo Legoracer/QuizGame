@@ -1,0 +1,10 @@
+LOBBY
+    -> Host waits for all players
+    -> Host clics start
+    (Chat available as soon as you join)
+
+CHOOSE CATEGORY
+STOP CHAT
+3 QUESTIONS
+ALLOW CHAT
+INTERMISSION, LEADERBOARD, CHOOSE CATEGORY

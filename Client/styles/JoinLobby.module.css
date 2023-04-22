@@ -88,3 +88,19 @@
 .createLobbyButton:hover{
     color: rgb(187, 185, 185);
 }
+
+.popupContainer {
+    position: fixed;
+    display: grid;
+    place-items: center;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.popupContainer .modal {
+    width: 300px;
+    height: fit-content;
+}

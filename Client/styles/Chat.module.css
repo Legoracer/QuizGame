@@ -1,0 +1,23 @@
+.chat {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px
+}
+
+.chatMessage {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+.chatMessage > .author {
+    color: red;
+    margin: 0px;
+}
+
+.chatMessage > .content {
+    color: white;
+    margin: 0px;
+}

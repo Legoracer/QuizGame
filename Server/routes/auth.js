@@ -23,7 +23,6 @@ router.post("/signup", async function(req, res) {
 router.post("/login", async function(req, res) {
     let username = req.body.username;
     let password = req.body.password;
-    console.log("LOGIN:",req.cookies["connect.sid"])
     let success = await auth.login(username, password)
     if (success) {
         req.session.username = username
@@ -39,13 +38,15 @@ router.post("/logout", async function(req, res) {
 })
 
 router.get("/", async function(req, res) {
-    console.log("FETCH:",req.cookies["connect.sid"])
     let data = await auth.getUser(req.session.username)
-    console.log(req.session.username)
+    
     let newData = {
-        username: data.username,
-        email: data.email
+        username: data.auth.username,
+        email: data.auth.email,
+
+        data: data.user
     }
+
     res.send(newData)
 })
 

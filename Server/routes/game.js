@@ -3,6 +3,7 @@ let router = express.Router()
 const rateLimit = require('express-rate-limit')
 const redisConnection = require("../modules/redisConnection")
 const generateID = require("../modules/generateID")
+const gameManager = require('../modules/gameManager')
 
 const rateLimiter = rateLimit({
     windowMs: 1 * 60, // One minute
@@ -23,13 +24,20 @@ router.post("/create", rateLimiter, async function(req, res) {
     let statePromise = redisConnection.set(`game:${genId}:state`, "0:0")
     let dataPromise = redisConnection.hmset(`game:${genId}:data`, {
         id: genId,
-        host: hostId
+        host: req.session.username,
+        host_sessionId: hostId
     })
-    let pointsPromise = redisConnection.zadd(`game:${genId}:points`, [])
+    let pointsPromise = redisConnection.zadd(`game:${genId}:points`, 'nx', [
+        0, req.session.username
+    ])
 
     await Promise.all([statePromise, dataPromise, pointsPromise])
+
+    gameManager.create(genId, hostId)
     
-    res.status(200)
+    res.send({
+        lobby: genId
+    })
 })
 
 // Joining an existing lobby
@@ -38,9 +46,9 @@ router.put("/join/:id", async function(req, res) {
 
     let state = await redisConnection.get(`game:${id}:state`)
     if (state == "0:0") {
-        res.send(200)
+        res.sendStatus(200)
     } else {
-        res.send(404)
+        res.sendStatus(404)
     }
 })
 
@@ -63,7 +71,6 @@ router.get("/:id", async function(req, res) {
     // Map points to [user] = points
     points.forEach((v, i) => {
         if (i%2 == 0) {
-            console.log(i, v)
             pointsMap[v] = points[i+1]
         }
     })
