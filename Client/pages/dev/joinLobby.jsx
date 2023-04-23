@@ -1,5 +1,6 @@
 import styles from '../../styles/Lobby.module.css';
-import { Roboto } from '@next/font/google'
+import { Roboto } from '@next/font/google';
+import LobbyId from "../../components/lobbyId";
 
 const roboto = Roboto({
     weight: '400',
@@ -12,12 +13,12 @@ export default function joinLobby() {
         // <Chat messages={messages} sendMessage={sendMessage} />
         <main className={[roboto.className, styles.wait].join(" ")}>
             <div className={styles.waitTitleContainer}>
-                <h1>Lobby ID: AQ24TO5</h1>
+                <LobbyId lobby="A3GV40"/>
             </div>
             <div className={styles.waitContainer}>
                 <p>You are: HOST</p>
                 <p>Players in lobby: 4 </p>
-                <button >START</button>
+                <button>START</button>
             </div>
         </main>
     )

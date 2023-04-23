@@ -1,0 +1,15 @@
+.lobbyID {
+    display: flex;
+}
+
+.lobbyID * {
+    text-align: center;
+    font-size: 40px;
+    width: 30px;
+    margin: 0px 2px 0px 2px;
+    padding: 4px;
+    color: lightblue;
+    background-color: rgba(0, 0, 0, .5);
+    border: rgba(255, 255, 255, .25) 1px solid;
+    border-radius: 4px;
+}

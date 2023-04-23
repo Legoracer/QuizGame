@@ -3,34 +3,33 @@
     height:100%;
 }
 
-.wait > .waitTitleContainer{
-    background-color: rgb(22, 27, 34);
+.waitTitleContainer{
     display:flex;
     justify-content: center;
-    padding:30px;
+    padding:0px 30px;
+    padding-top:75px;
 }
 
-.wait > .waitContainer{
+.waitContainer{
     display:flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     font-size:1.4em;
-    margin-top:150px;
+    margin-top:140px;
 }
 
 .waitContainer > *{
     margin:25px;
 }
 
-.wait > .waitContainer > img{
+.waitContainer > img{
     width:200px;
     rotate: 20deg;
 }
 
-
-.wait > .waitContainer > button {
-    background-color: rgb(232, 228, 228);
+.waitContainer > button {
+    background-color: rgb(255, 255, 255);
     border-radius: 8px;
     border: none;
     width: 140px;
@@ -39,7 +38,7 @@
     font-size: 16px;
 }
 
-.wait > .waitContainer > button:hover{
+.waitContainer > button:hover{
     background-color: rgb(232, 228, 228);
 }
 
@@ -69,13 +68,17 @@
 } */
 
 .question {
+    height: 100%;
     background-color: rgb(13, 17, 23);
     color:white;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100%;
+}
+
+.question > h1{
+    padding:0px 10px;
 }
 
 .question .answers {
@@ -100,7 +103,6 @@
     background-color: rgb(232, 228, 228);
 }
 
-
 .answer {
     background-color: rgb(13, 17, 23);
     color:white;
@@ -119,7 +121,6 @@
     color:rgb(83, 236, 83);
     margin-top:0px;
 }
-
 
 .answer .leaderboard {
     background-color: rgba(255,255,255,0.1);
@@ -153,11 +154,42 @@
     background-color: rgb(13, 17, 23);
     color:white;
     display:flex;
+    justify-content: center;
     align-items: center;
-    justify-content:center;
-    flex-direction: column;
+    flex-direction: row;
 }
 
-.winner > img{
+.first img{
+    width: 200px;
+}
+
+.second img, .third img{
     width:140px;
+}
+
+.first h1, .second h2, .third h2{
+    text-align: center;
+}
+
+
+.first{
+
+}
+.second{
+
+}
+
+.third{
+    
+}
+
+
+/* media query*/
+
+@media only screen and (max-width: 768px){
+    .question .answers {
+        grid-template:
+            "a" auto;
+        gap: 20px;
+    }
 }
