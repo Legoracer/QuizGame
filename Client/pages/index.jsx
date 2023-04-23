@@ -37,7 +37,7 @@ export default function Home() {
 
     return (
         <main className={styles.mainContainer}>
-            <h1 className={[titleFont.className, styles.mainTitle].join(" ")}>Ghostly Trivia</h1>
+            <h1 className={[titleFont.className, styles.mainTitle].join(" ")}>Trivia Pursuit</h1>
             <button className={styles.loginButton} onClick={gotoLogin}>Log in</button>
             <button className={styles.createAccountButton} onClick={gotoRegister}>Create new account</button>
         </main>

@@ -55,6 +55,7 @@
     background-color: rgb(255, 255, 255);
     height:330px;
     width: 30%;
+    min-width: 500px;
     border-radius: 20px;
 }
 
@@ -62,6 +63,7 @@
     background-color: rgb(255, 255, 255);
     height:420px;
     width: 30%;
+    min-width: 500px;
     border-radius: 30px;
 }
 
@@ -108,4 +110,25 @@
 }
 
 
+/* media query*/
 
+@media only screen and (max-width: 992px) {
+    .mainTitle{
+        font-size:100px;
+    }
+} 
+
+@media only screen and (max-width: 768px){
+    .mainTitle{
+        font-size:80px;
+        width: 100%;
+    }
+    .loginButton{
+        width: 18%;
+        height: 40px;
+    }
+    .createAccountButton{
+        font-size: 13px;
+        margin-top:5px;
+    }
+}
