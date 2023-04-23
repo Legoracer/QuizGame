@@ -42,31 +42,6 @@
     background-color: rgb(232, 228, 228);
 }
 
-
-/* .wait {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-}
-
-.wait > * {
-    margin: 0px;
-}
-
-.wait .users {
-    margin: 20px
-}
-.wait .users > * {
-    width: 60px;
-    height: 60px;
-    background-color: grey;
-    border-radius: 50%;
-    border-color: rgba(0, 0, 0, .5);
-} */
-
 .question {
     height: 100%;
     background-color: rgb(13, 17, 23);
@@ -150,39 +125,62 @@
 }
 
 .winner{
+    position: relative;
     height:100%;
     background-color: rgb(13, 17, 23);
     color:white;
-    display:flex;
+    z-index: 5;
+}
+
+.winnerDiv{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.winnerDiv > button{
+    background-color: rgb(255, 255, 255);
+    color: rgb(92, 91, 91);
+    border-color: transparent;
+    border-radius: 8px;
+    width: 8%;
+    height: 40px;
+    margin-top: 70px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.winnerDiv > button:hover{
+    background-color: rgb(232, 228, 228);
+}
+
+.winnerImages{
+    display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap:120px;
 }
 
 .first img{
-    width: 200px;
+    width: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .second img, .third img{
     width:140px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .first h1, .second h2, .third h2{
     text-align: center;
 }
-
-
-.first{
-
-}
-.second{
-
-}
-
-.third{
-    
-}
-
 
 /* media query*/
 
@@ -191,5 +189,9 @@
         grid-template:
             "a" auto;
         gap: 20px;
+    }
+    .winnerDiv > button{
+        height:60px;
+        width:10%;
     }
 }
