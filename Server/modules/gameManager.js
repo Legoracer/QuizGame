@@ -1,7 +1,8 @@
 const EventEmitter = require("events")
 const Questions = require("../modules/questions.json")
 const uuid = require('uuid');
-const redis = require("../modules/redisConnection")
+const redis = require("../modules/redisConnection");
+const redisConnection = require("../modules/redisConnection");
 
 // Game Manager
 function GameManager() {
@@ -31,7 +32,9 @@ function Game(id, host) {
     this.sockets = {}
     this.messages = []
     this.started = false
-
+    this.finished = false
+    this.questionCount = 0
+    
     this.currentQuestion = {
         answers: [],
         correctAnswer: -1,
@@ -56,11 +59,19 @@ Game.prototype.ask = function() {
     let [category, question] = this.generateQuestion()
     let id = uuid.v4()
 
+    if (this.finished) return
+
+    if (this.questionCount == 10) {
+        this.finish();
+    }
+
+    this.questionCount++;
     this.currentQuestion = {
         answers: question.answers,
         correctAnswer: question.correctAnswer,
         id: id
     }
+    this.playersAnswered = {}
     this.sendAll({
         type: "changeState",
         state: "QUESTION",
@@ -72,16 +83,18 @@ Game.prototype.ask = function() {
 
     setTimeout(() => {
         this.showAnswers();
-    }, 25000)
+    }, 10000)
 }
 
 Game.prototype.showAnswers = function() {
     let answers = {}
-
+    
     for (let sessionId in this.sockets) {
+        let username = this.sockets[sessionId].request.session.username
         let answer = this.playersAnswered[sessionId]
         let correct = answer == this.currentQuestion.correctAnswer
 
+        redisConnection.zadd(`game:${this.id}:points`, 'incr', [correct ? 100 : 0, username])
         // points
         answers[sessionId] = correct
     }
@@ -99,7 +112,7 @@ Game.prototype.showAnswers = function() {
     
     setTimeout(() => {
         this.ask();
-    }, 25000)
+    }, 7000)
 }
 
 Game.prototype.generateQuestion = function() {
@@ -115,6 +128,16 @@ Game.prototype.setAnswer = function(sessionId, answerIndex, id) {
     if (id == this.currentQuestion.id) {
         this.playersAnswered[sessionId] = answerIndex
     }
+}
+
+Game.prototype.finish = function() {
+    this.finished = true
+
+    this.sendAll({
+        type: "changeState",
+        state: "END",
+        leaderboard: {}
+    })
 }
 
 Game.prototype.sendOne = function (sessionID, message) {
