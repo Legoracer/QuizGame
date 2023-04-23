@@ -53,6 +53,14 @@ Game.prototype.start = function (sessionId) {
         this.started = true
         this.ask()
     }
+
+    for (let sessionId in this.sockets) {
+        let val = this.sockets[sessionId]
+        if (val.request && val.request.session && val.request.session.username) {
+            let username = val.request.session.username;
+            redisConnection.hincrby(`user:${username}`, "total_games", 1) 
+        }
+    }
 }
 
 Game.prototype.ask = function() {
@@ -60,10 +68,6 @@ Game.prototype.ask = function() {
     let id = uuid.v4()
 
     if (this.finished) return
-
-    if (this.questionCount == 10) {
-        this.finish();
-    }
 
     this.questionCount++;
     this.currentQuestion = {
@@ -86,17 +90,36 @@ Game.prototype.ask = function() {
     }, 10000)
 }
 
-Game.prototype.showAnswers = function() {
+Game.prototype.showAnswers = async function() {
     let answers = {}
     
     for (let sessionId in this.sockets) {
-        let username = this.sockets[sessionId].request.session.username
+        let val = this.sockets[sessionId]
         let answer = this.playersAnswered[sessionId]
         let correct = answer == this.currentQuestion.correctAnswer
 
-        redisConnection.zadd(`game:${this.id}:points`, 'incr', [correct ? 100 : 0, username])
+        
+        if (val.request && val.request.session && val.request.session.username) {
+            let username = val.request.session.username
+            redisConnection.zadd(`game:${this.id}:points`, 'incr', [correct ? 100 : 0, username])
+            redisConnection.hincrby(`user:${username}`, "total_answers", 1)
+            if (correct) {
+                redisConnection.hincrby(`user:${username}`, "correct_answers", 1) 
+            }
+        }
+        
         // points
         answers[sessionId] = correct
+    }
+
+    let lb = await redisConnection.zrange(`game:${this.id}:points`, 0, -1, 'rev', 'withscores')
+    let lb_formatted = {}
+
+    for (let i=0; i<lb.length; i+=2) {
+        let k = lb[i];
+        let v = lb[i+1]
+
+        lb_formatted[k] = v
     }
 
     for (let sessionId in this.sockets) {
@@ -105,14 +128,19 @@ Game.prototype.showAnswers = function() {
             state: "ANSWER",
             correct: answers[sessionId],
             answer: this.currentQuestion.answers[this.currentQuestion.correctAnswer - 1],
-            leaderboard: {}
+            leaderboard: lb_formatted
         })
     }
 
-    
-    setTimeout(() => {
-        this.ask();
-    }, 7000)
+    if (this.questionCount == 10) {
+        setTimeout(() => {
+            this.finish();
+        }, 7000)
+    } else {
+        setTimeout(() => {
+            this.ask();
+        }, 7000)
+    }
 }
 
 Game.prototype.generateQuestion = function() {
@@ -130,13 +158,23 @@ Game.prototype.setAnswer = function(sessionId, answerIndex, id) {
     }
 }
 
-Game.prototype.finish = function() {
+Game.prototype.finish = async function() {
     this.finished = true
+
+    let lb = await redisConnection.zrange(`game:${this.id}:points`, 0, -1, 'rev', 'withscores')
+    let lb_formatted = {}
+
+    for (let i=0; i<lb.length; i+=2) {
+        let k = lb[i];
+        let v = lb[i+1]
+
+        lb_formatted[k] = v
+    }
 
     this.sendAll({
         type: "changeState",
         state: "END",
-        leaderboard: {}
+        leaderboard: lb_formatted
     })
 }
 
@@ -166,10 +204,13 @@ Game.prototype.sendAll = function (message) {
 // }
 
 Game.prototype.onClientJoined = function (ws, req) {
-    this.sockets[req.sessionID] = {
-        socket: ws,
-        request: req
+    if (!this.sockets[req.sessionID]) {
+        this.sockets[req.sessionID] = {
+            socket: ws,
+            request: req
+        }
     }
+
     this.sendAll({
         action: "playerList",
         players: Object.values(this.sockets).map((x) => x.request.session.username)

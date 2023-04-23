@@ -3,6 +3,14 @@ import { io } from "socket.io-client"
 import Chat from "../../components/chat"
 import { useRouter } from 'next/router';
 import styles from '../../styles/Lobby.module.css';
+import LobbyId from "../../components/lobbyId";
+import { Roboto } from '@next/font/google';
+
+
+const roboto = Roboto({
+    weight: '400',
+    subsets: ['latin'],
+  })
 
 export default function Game(props) {
     let router = useRouter()
@@ -14,9 +22,8 @@ export default function Game(props) {
         question: null,
         answers: null
     })
-    let answerData = useRef({
-
-    })
+    let answerData = useRef({})
+    let finishData = useRef({})
 
     const isBrowser = typeof window !== "undefined";
     const socket = useMemo(() => isBrowser ? new WebSocket(`ws://localhost:8080/api/ws/${props.data.id}`) : null, []);
@@ -64,20 +71,23 @@ export default function Game(props) {
                         answers: data.answers,
                         id: data.id
                     }
-                    setState(data.state)
                 } else if (data.state == "ANSWER") {
                     answerData.current = {
                         correct: data.correct,
                         answer: data.answer,
                         leaderboard: data.leaderboard
                     }
-                    setState(data.state)
+                } else if (data.state == "END") {
+                    finishData.current = {
+                        leaderboard: data.leaderboard
+                    }
                 }
+                setState(data.state)
             }
         });
-        
+
         return () => {
-            
+
         }
     })
 
@@ -89,28 +99,28 @@ export default function Game(props) {
             id: questionData.current.id
         }))
     }
-    
+
 
     return (
-        <div className={styles.main}>
+        <>
             {/* DO NOT TOUCH ANYTHING BELOW THIS! */}
             {(state == "LOBBY") ?
-            <Lobby messages={messages} socket={socket} username={username} props={props}/>
-            : null}
+                <Lobby messages={messages} socket={socket} username={username} props={props} />
+                : null}
 
             {(state == "QUESTION") ?
-            <Question questionData={questionData.current} submitAnswer={answer}/>
-            : null}
+                <Question questionData={questionData.current} submitAnswer={answer} />
+                : null}
 
             {(state == "ANSWER") ?
-            <Answer isCorrect={answerData.current.correct} correctString={answerData.current.answer} leaderboard={answerData.current.leaderboard}/>
-            : null}
+                <Answer isCorrect={answerData.current.correct} correctString={answerData.current.answer} leaderboard={answerData.current.leaderboard} />
+                : null}
             {/* UP TO HERE! */}
-        </div>
+        </>
     )
 }
 
-function Lobby({socket, messages, username, props}) {
+function Lobby({ socket, messages, username, props }) {
     function sendMessage(message) {
         if (socket) {
             if (message != "") {
@@ -131,21 +141,25 @@ function Lobby({socket, messages, username, props}) {
     return (
         <>
             <Chat messages={messages} sendMessage={sendMessage} />
-            <main className={styles.wait}>
-                <h1>{props.data.id}</h1>
-                <p>You are: {props.data.host == username ? "HOST" : "PLAYER"}</p>
-                <p>Players in lobby: </p>
+            <main className={[roboto.className, styles.wait].join(" ")}>
+                <div className={styles.waitTitleContainer}>
+                    <LobbyId lobby={props.data.id} />
+                </div>
+                <div className={styles.waitContainer}>
+                    <p>You are: {props.data.host == username ? "HOST" : "PLAYER"}</p>
 
-                {props.data.host == username ?
-                <button onClick={startGame}>START</button>
-                :null}
+                    {props.data.host == username ? 
+                    <button onClick={startGame}>START</button>
+                    :null}
+                    
+                </div>
             </main>
         </>
     )
 }
 
 
-function Question({questionData, submitAnswer}) {
+function Question({ questionData, submitAnswer }) {
     let [answer, setAnswer] = useState(-1)
 
     function submit(e) {
@@ -155,21 +169,21 @@ function Question({questionData, submitAnswer}) {
     }
 
     return (
-        <div className={styles.question}>
-            <h2>{questionData.question}</h2>
-            <h4>{questionData.category}</h4>
+        <div className={[roboto.className, styles.question].join(" ")}>
+            <h1>{questionData.question}</h1>
+            <h3>{questionData.category}</h3>
             <div className={styles.answers}>
-                <button value={1} disabled={answer!=-1} onClick={submit}>{questionData.answers[0]}</button>
-                <button value={2} disabled={answer!=-1} onClick={submit}>{questionData.answers[1]}</button>
-                <button value={3} disabled={answer!=-1} onClick={submit}>{questionData.answers[2]}</button>
-                <button value={4} disabled={answer!=-1} onClick={submit}>{questionData.answers[3]}</button>
+                <button disabled={answer!=-1} value={1} onClick={submit}>{questionData.answers[0]}</button>
+                <button disabled={answer!=-1} value={2} onClick={submit}>{questionData.answers[1]}</button>
+                <button disabled={answer!=-1} value={3} onClick={submit}>{questionData.answers[2]}</button>
+                <button disabled={answer!=-1} value={4} onClick={submit}>{questionData.answers[3]}</button>
             </div>
         </div>
     )
 }
 
 
-function Answer({isCorrect, correctString, leaderboard}) {
+function Answer({ isCorrect, correctString, leaderboard }) {
     let [answer, setAnswer] = useState(-1)
 
     function submit(e) {
@@ -178,12 +192,21 @@ function Answer({isCorrect, correctString, leaderboard}) {
         submitAnswer(i)
     }
 
-    return (
-        <div className={styles.answer}>
-            <h2>You answered {isCorrect ? "Correctly" : "Incorrectly"}</h2>
-            <p>{correctString}</p>
-            <div>
+    console.log(leaderboard)
 
+    return (
+        <div className={[roboto.className, styles.answer].join(" ")}>
+            <h1>You answered {isCorrect ? "correctly" : "incorrectly"}!</h1>
+            <h3>{correctString}</h3>
+            <div className={styles.leaderboard}>
+                <h2>LEADERBOARD</h2>
+                <div>
+                    {
+                        Object.entries(leaderboard).map(([k,v])=> (
+                            <p>{k} : {v}</p>
+                        ))
+                    }
+                </div>
             </div>
         </div>
     )
@@ -212,7 +235,7 @@ export async function getStaticProps({ params }) {
             },
         }
     }
-    
+
     return {
         props: json || {}
     }
