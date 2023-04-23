@@ -23,13 +23,18 @@
     margin:25px;
 }
 
+.wait > .waitContainer > img{
+    width:200px;
+    rotate: 20deg;
+}
+
+
 .wait > .waitContainer > button {
-    background-color: rgb(255, 255, 255);
-    color: rgb(92, 91, 91);
+    background-color: rgb(232, 228, 228);
     border-radius: 8px;
     border: none;
-    width: 120px;
-    height: 40px;
+    width: 140px;
+    height: 50px;
     font-weight: bold;
     font-size: 16px;
 }
@@ -64,12 +69,13 @@
 } */
 
 .question {
+    background-color: rgb(13, 17, 23);
+    color:white;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 100%;
-    background-color: rgb(13, 17, 23);
 }
 
 .question .answers {
@@ -94,34 +100,64 @@
     background-color: rgb(232, 228, 228);
 }
 
+
 .answer {
     background-color: rgb(13, 17, 23);
+    color:white;
     display: flex;
     align-items: center;
     flex-direction: column;
     height: 100%;
-    padding-top:110px;
 }
 
-.answer > h2{
-    margin-top: 70px;
+.answer > h1{
+    font-size:2.8em;
+    padding-top:80px;
 }
+
+.answer > h3{
+    color:rgb(83, 236, 83);
+    margin-top:0px;
+}
+
 
 .answer .leaderboard {
-    width: 80%;
+    background-color: rgba(255,255,255,0.1);
+    width: 70%;
     display: grid;
-    margin-top:5px;
+    margin-top:110px;
     grid-template:
         "a" 
         "a"
         "a"
         "a";
+    padding:30px 0px;
+    border-radius:8px;
 }
 
-.answer .leaderboard *{
+.answer .leaderboard p{
     background-color: rgb(236, 236, 236);
     color:black;
     padding:20px;
-    border-radius: 3px;
+    border-radius: 8px;
     font-size:1em;
+    margin: 8px 60px;
+}
+
+.answer .leaderboard h2{
+    padding-left:60px;
+}
+
+.winner{
+    height:100%;
+    background-color: rgb(13, 17, 23);
+    color:white;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction: column;
+}
+
+.winner > img{
+    width:140px;
 }

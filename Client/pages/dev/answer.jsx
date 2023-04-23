@@ -12,8 +12,8 @@ export default function answer() {
         <div className={[roboto.className, styles.answer].join(" ")}>
             <h1>You answered correctly!</h1>
             <h3>Answer: Reykjavik</h3>
-            <h2>LEADERBOARD</h2>
             <div className={styles.leaderboard}>
+                <h2>LEADERBOARD</h2>
                 <p>Sara</p>
                 <p>Max</p>
                 <p>Tena</p>
