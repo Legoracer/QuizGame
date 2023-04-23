@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import styles from '../../styles/Lobby.module.css';
 import LobbyId from "../../components/lobbyId";
 import { Roboto } from '@next/font/google';
+import celebration from "../../styles/Celebration.module.css"
 
 
 const roboto = Roboto({
@@ -79,7 +80,9 @@ export default function Game(props) {
                     }
                 } else if (data.state == "END") {
                     finishData.current = {
-                        leaderboard: data.leaderboard
+                        first: data.first,
+                        second: data.second,
+                        third: data.third
                     }
                 }
                 setState(data.state)
@@ -114,6 +117,10 @@ export default function Game(props) {
 
             {(state == "ANSWER") ?
                 <Answer isCorrect={answerData.current.correct} correctString={answerData.current.answer} leaderboard={answerData.current.leaderboard} />
+                : null}
+
+            {(state == "END") ?
+                <Winner first={finishData.current.first} second={finishData.current.second} third={finishData.current.third} />
                 : null}
             {/* UP TO HERE! */}
         </>
@@ -209,6 +216,53 @@ function Answer({ isCorrect, correctString, leaderboard }) {
                 </div>
             </div>
         </div>
+    )
+}
+
+function Winner({first, second, third}) {
+    let router = useRouter()
+
+    function goBack() {
+        router.push("/lobby")
+    }
+
+    return (
+        <>
+            <div className={[roboto.className, styles.winner].join(" ")}>
+            <div className={celebration.confettis}>
+                    <div className={celebration.confetti}></div>
+                    <div className={celebration.confetti}></div>
+                    <div className={celebration.confetti}></div>
+                    <div className={celebration.confetti}></div>
+                    <div className={celebration.confetti}></div>
+                    <div className={celebration.confetti}></div>
+                    <div className={celebration.confetti}></div>
+                    <div className={celebration.confetti}></div>
+                    <div className={celebration.confetti}></div>
+                    <div className={celebration.confetti}></div>
+                    <div className={celebration.confetti}></div>
+                    <div className={celebration.confetti}></div>
+                    <div className={celebration.confetti}></div>
+                </div>
+                <div className={styles.winnerDiv}>
+                    <div className={styles.winnerImages}>
+                        <div className={styles.second}>
+                            <img src="/silver-medal.svg"></img>
+                            <h2>{second}</h2>
+                        </div>
+                        <div className={styles.first}>
+                            <img src="/trophy.svg"></img>
+                            <h1>{first}</h1>
+                        </div>
+                        <div className={styles.third}>
+                            <img src="/bronze-medal.svg"></img>
+                            <h2>{third}</h2>
+                        </div>
+                    </div>
+                    <button onClick={goBack}>Go back</button>
+                </div>
+            </div>
+        </>
     )
 }
 

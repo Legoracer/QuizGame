@@ -26,7 +26,7 @@
                 "Africa",
                 "Australia",
                 "Asia",
-                "South Africa"
+                "South America"
             ],
             "correctAnswer": 1
         },
@@ -110,7 +110,7 @@
                 "TLC",
                 "Spice Girls",
                 "Pussycat Dolls",
-                "Destiny’s Child"
+                "Destiny's Child"
             ],
             "correctAnswer": 4
         },
@@ -434,7 +434,7 @@
             "correctAnswer": 3
         },
         {
-            "question":"Frankly my dear, I don't give a damn' is an iconic line from which classic film?",
+            "question":"'Frankly my dear, I don't give a damn' is an iconic line from which classic film?",
             "answers": [
                 "Gone with the Wind",
                 "Casablanca",

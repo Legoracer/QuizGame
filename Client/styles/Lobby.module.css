@@ -1,7 +1,4 @@
-.main {
-    height:100%
-}
-
+/* lobby page */
 .wait{
     background-color: rgb(13, 17, 23);
     height:100%;
@@ -46,6 +43,7 @@
     background-color: rgb(232, 228, 228);
 }
 
+/* question page */
 .question {
     height: 100%;
     background-color: rgb(13, 17, 23);
@@ -82,6 +80,7 @@
     background-color: rgb(232, 228, 228);
 }
 
+/* answer page */
 .answer {
     background-color: rgb(13, 17, 23);
     color:white;
@@ -128,12 +127,14 @@
     padding-left:60px;
 }
 
+/* winner page */
 .winner{
     position: relative;
     height:100%;
     background-color: rgb(13, 17, 23);
     color:white;
     z-index: 5;
+    height:100%;
 }
 
 .winnerDiv{
@@ -144,12 +145,13 @@
     width: 100%;
     height: 100%;
 }
+
 .winnerDiv > button{
     background-color: rgb(255, 255, 255);
     color: rgb(92, 91, 91);
     border-color: transparent;
     border-radius: 8px;
-    width: 8%;
+    width: 120px;
     height: 40px;
     margin-top: 70px;
     font-size: 16px;
@@ -165,7 +167,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap:120px;
+    gap:15%;
 }
 
 .first img{
@@ -187,6 +189,17 @@
 }
 
 /* media query*/
+@media only screen and (max-width: 992px) {
+    .winnerImages{
+        gap:10%;
+    }
+    .first img{
+        width:220px;
+    }
+    .second img, .third img{
+        width: 110px;
+    }
+}
 
 @media only screen and (max-width: 768px){
     .question .answers {
@@ -194,8 +207,13 @@
             "a" auto;
         gap: 20px;
     }
-    .winnerDiv > button{
-        height:60px;
-        width:10%;
+    .winnerImages{
+        flex-direction: column;
+    }
+    .first img{
+        width:200px;
+    }
+    .second img, .third img{
+        width: 100px;
     }
 }

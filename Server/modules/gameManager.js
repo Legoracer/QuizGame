@@ -135,11 +135,11 @@ Game.prototype.showAnswers = async function() {
     if (this.questionCount == 10) {
         setTimeout(() => {
             this.finish();
-        }, 7000)
+        }, 5000)
     } else {
         setTimeout(() => {
             this.ask();
-        }, 7000)
+        }, 5000)
     }
 }
 
@@ -162,19 +162,19 @@ Game.prototype.finish = async function() {
     this.finished = true
 
     let lb = await redisConnection.zrange(`game:${this.id}:points`, 0, -1, 'rev', 'withscores')
-    let lb_formatted = {}
 
-    for (let i=0; i<lb.length; i+=2) {
-        let k = lb[i];
-        let v = lb[i+1]
+    let first = lb[0]
+    let second = lb[2]
+    let third = lb[4]
 
-        lb_formatted[k] = v
-    }
+    redisConnection.hincrby(`user:${first}`, "wins", 1) 
 
     this.sendAll({
         type: "changeState",
         state: "END",
-        leaderboard: lb_formatted
+        first: first,
+        second: second ? second : "Nobody",
+        third: third ? third : "Nobody"
     })
 }
 
